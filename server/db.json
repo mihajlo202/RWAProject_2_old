@@ -1,0 +1,55 @@
+{
+    "loggedUsers": [
+      {
+        "email": "bjela@gmail.com",
+        "password": "bjela",
+        "role": "reziser",
+        "id": 1
+      }
+    ],
+    "director": [
+      {
+        "name": "Dragan",
+        "surname": "Bjelogrlic",
+        "email": "bjela@gmail.com",
+        "sertificate": "Akademija umetnosti Beograd",
+        "id": 1
+      }
+    ],
+    "user": [
+      {
+        "name": "Mihajlo",
+        "surname": "Jokic",
+        "email": "jokic@gmail.com",
+        "type": "snimatelj",
+        "grade": "",
+        "status": "slobodan",
+        "workPlace": "",
+        "id": 1
+      }
+    ],
+    "event": [
+      {
+        "name": "Vratiće se rode ",
+        "description": "Da li će se rode ikada vratiti? Ili su ljudi postali toliko loši da smo zauvek izgubili ove blagonosne ptice.",
+        "userType": "glumac",
+        "userCount": 19,
+        "directorId": 1,
+        "id": 1
+      }
+    ],
+    "eventSignedUp": [
+      {
+        "event": 6,
+        "user": 10,
+        "id": 8
+      }
+    ],
+    "eventEmployed": [
+      {
+        "id": 1,
+        "event": 1,
+        "user": 4
+      }
+    ]
+  }

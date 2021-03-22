@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core'
 import { BehaviorSubject } from 'rxjs'
 
+@Injectable({
+    providedIn: 'root'
+  })
 export class NavService {
     private flagSource = new BehaviorSubject<boolean>(false);
     flagCurrent = this.flagSource.asObservable();

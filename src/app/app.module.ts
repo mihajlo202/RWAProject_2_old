@@ -10,13 +10,21 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { environment } from 'src/environments/environment';
 import { StoreDevtools } from '@ngrx/store-devtools';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EmployerComponent } from './components/employer/employer.component';
+import { WorkerComponent } from './components/worker/worker.component';
+import { EmployerProfileComponent } from './components/employer-profile/employer-profile.component';
+import { WorkerProfileComponent } from './components/worker-profile/worker-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    MainPageComponent
+    MainPageComponent,
+    EmployerComponent,
+    WorkerComponent,
+    EmployerProfileComponent,
+    WorkerProfileComponent
   ],
   imports: [
     BrowserModule,

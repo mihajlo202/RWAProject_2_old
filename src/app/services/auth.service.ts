@@ -29,17 +29,17 @@ import { IWorker } from '../models/Worker';
             return this.http.get<ILoggedUser>(url);
         }
 
-        postRegisterLoggedUser(user: LoggedUser) : Observable<ILoggedUser> {
+        postRegisterLoggedUser(user: ILoggedUser) : Observable<ILoggedUser> {
             let url=this.baseURL + `/loggedUsers`;
             return this.http.post<ILoggedUser>(url,user);
         }
 
-        postRegisterDirector(emp:Employer):Observable<IEmployer>{
+        postRegisterEmployer(emp:IEmployer):Observable<IEmployer>{
             let url=this.baseURL+`/employer`;
             return this.http.post<IEmployer>(url,emp);
           }
         
-          postRegisterUser(worker: Worker): Observable<IWorker>{
+          postRegisterWorker(worker: IWorker): Observable<IWorker>{
             let url=this.baseURL+`/worker`;
             return this.http.post<IWorker>(url, worker);
           }

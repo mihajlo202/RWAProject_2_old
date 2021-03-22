@@ -17,12 +17,12 @@ export function authReducer(state = initialState, action: AuthActions) {
     switch(action.type) {
         case AuthActionTypes.LoginAction:
             return {
-                loggeIn: true,
+                loggedIn: true,
                 user: action.payload.user
             };
         case AuthActionTypes.LogoutAction:
             return {
-                logedIn: false,
+                loggedIn: false,
                 user: undefined
             };
         default:

@@ -5,6 +5,7 @@ import { filter } from 'rxjs/operators';
 import { NavService } from './services/nav.service';
 import { AppState } from './store';
 import { LogOut } from './store/actions/auth.actions';
+import { selectedLoggedUser } from './store/selectors/auth.selectors'
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,12 @@ import { LogOut } from './store/actions/auth.actions';
 export class AppComponent {
   title = 'JobApp';
   showNavButtons: boolean;
-  // user$=this.store.pipe(
-  //     select(null),//selectedLoggedUser
-  //     filter(val => val !== undefined)
-  //   );
+  user$=this.store.pipe(
+      select(selectedLoggedUser),
+      filter(val => val !== undefined)
+    );
   constructor(private showNavService: NavService,
-    //private store: Store<AppState>,
+    private store: Store<AppState>,
     private router: Router) {}
 
 ngOnInit(){
@@ -27,32 +28,32 @@ ngOnInit(){
 }
 
 logoutClicked(){
-    //this.store.dispatch(new LogOut());
+    this.store.dispatch(new LogOut());
     this.showNavService.changeFlag(false);
     this.router.navigate([`./mainPage`]);
 }
 
-// pocetnaClicked(){
-//   this.user$.subscribe(
-//   user=>{
-//     if(user.role==="employer"){
-//       this.router.navigate(['/employer/main'])
-//       }
-//       else{
-//         this.router.navigate(['/worker/main'])
-//       }
-//   })
-// }
+pocetnaClicked(){
+  this.user$.subscribe(
+  user=>{
+    if(user.role==="employer"){
+      this.router.navigate(['/employer/main'])
+      }
+      else{
+        this.router.navigate(['/worker/main'])
+      }
+  })
+}
 
-// profilClicked(){
-//   this.user$.subscribe(
-//   user=>{
-//     if(user.role==="reziser"){
-//       this.router.navigate(['/employer/profile'])
-//     }
-//     else{
-//       this.router.navigate(['/employer/profile'])
-//     }
-//     })
-//   }
+profilClicked(){
+  this.user$.subscribe(
+  user=>{
+    if(user.role==="reziser"){
+      this.router.navigate(['/employer/profile'])
+    }
+    else{
+      this.router.navigate(['/employer/profile'])
+    }
+    })
+  }
 }

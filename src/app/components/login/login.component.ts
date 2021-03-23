@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AppState } from 'src/app/store';
 import { LogIn } from 'src/app/store/actions/auth.actions';
 import { map } from 'rxjs/operators'
+import { NavService } from 'src/app/services/nav.service';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,17 @@ import { map } from 'rxjs/operators'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  email : FormControl= new FormControl('', [Validators.required, Validators.email]);
-  password : FormControl= new FormControl('', [Validators.required]);
+  email: string;
+  password: string;
   errorMsg="";
   constructor(private authService:AuthService,
               private router: Router,
-              //private store: Store<AppState>
-              ) { }
+              private store: Store<AppState>,
+              private navService: NavService
+              ) { 
+                this.email = "";
+                this.password = "";
+              }
 
   ngOnInit(): void {
   }
@@ -31,32 +36,18 @@ export class LoginComponent implements OnInit {
     this.cancelClicked.emit();
   }
 
-  getErrorMessageEmail() {
-    if (this.email.hasError('required')) {
-      return 'Morate uneti vrednost';
-    }
-    return this.email.hasError('email') ? 'Nevalidan email' : '';
-  }
-
-  getErrorMessagePassword() {
-    if (this.password.hasError('required')) {
-      return 'Morate uneti vrednost';
-    }
-  }
-
   btnLoginClicked(){
-   
-    const provera=this.checkInput(this.email.value, this.password.value);
+    const provera=this.checkInput(this.email, this.password);
     if(provera){
-      this.authService.checkIfUserValid(this.email.value, this.password.value)
+      this.authService.checkIfUserValid(this.email, this.password)
       .pipe( 
         map(array=> array[0])
       ).subscribe(value=>{
         if(value!=undefined){
           this.errorMsg="";
-          //this.store.dispatch(new LogIn({user : value }));
+          this.store.dispatch(new LogIn({user : value }));
           this.router.navigate([`./${value.role}`]);
-          //this.showNavService.changeFlag(true);
+          this.navService.changeFlag(true);
         }
         else{
           this.errorMsg="Pogrešan email ili password!"

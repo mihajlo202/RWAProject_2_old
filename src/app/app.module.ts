@@ -20,6 +20,7 @@ import { AuthEffects } from './store/effects/auth.effects';
 import { FormsModule } from '@angular/forms';
 import { EmployerEffects } from './store/effects/employer.effects';
 import { CreateJobComponent } from './components/create-job/create-job.component';
+import { WorkerEffects } from './store/effects/worker.effects';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { CreateJobComponent } from './components/create-job/create-job.component
     EffectsModule.forRoot([AuthEffects,
       EmployerEffects,
       //EventEffects,
-      //UserEffects,
+      WorkerEffects,
       //UserInfoEffects,
       //EventsSignedUpEffects,
       //EventsEmployedEffects

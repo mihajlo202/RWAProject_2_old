@@ -6,7 +6,7 @@ import { environmentVariables } from "../constants/url-constants";
 import { IJob } from "../models/Job";
 import { IJobEmployed, JobEmployed } from "../models/JobEmployed";
 import { IJobSignedUp, JobSignedUp } from "../models/JobSignedUp";
-import { IWorker } from "../models/Worker";
+import { IWorker, Worker } from "../models/Worker";
 
 @Injectable({
     providedIn: 'root'

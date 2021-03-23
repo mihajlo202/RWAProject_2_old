@@ -3,6 +3,7 @@ import { environment } from "src/environments/environment";
 import { authReducer, AuthState } from "./reducers/auth.reducer";
 import { employerReducer, EmployerState } from "./reducers/employer.reducer";
 import { jobReducer, JobState } from "./reducers/job.reducers";
+import { workerReducer, WorkerState } from "./reducers/worker.reducers";
 
 
 export interface AppState {
@@ -11,7 +12,7 @@ export interface AppState {
 //    userInfo: UserInfoState,
     jobs: JobState,
 //    eventToUpdate: EventToUpdateState,
-//    users: UserState,
+    worker: WorkerState,
 //    eventsSignedUp: EventsSignedUpState,
 //    eventsEmployed: EventsEmployedState
 }
@@ -22,7 +23,7 @@ export const reducers : ActionReducerMap<AppState> = {
 //    userInfo: userInfoReducer,
     jobs: jobReducer,
 //    eventToUpdate: eventToUpdateReducer,
-//    users: userReducer,
+    worker: workerReducer,
 //    eventsSignedUp: eventsSignedUpReducer,
 //    eventsEmployed: eventsEmployedReducer
 };

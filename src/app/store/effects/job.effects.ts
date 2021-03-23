@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { map, mergeMap } from "rxjs/operators";
+import { Actions, createEffect, Effect, ofType } from "@ngrx/effects";
+import { noop } from "rxjs";
+import { map, mergeMap, tap } from "rxjs/operators";
 import { EmployerService } from "src/app/services/employer.service";
 import { WorkerService } from "src/app/services/worker.service";
-import { JobActionTypes, LoadAllJobs, LoadEmployersJobs, NewJob, UpdateJob } from "../actions/job.actions";
+import { DeleteJob, JobActionTypes, LoadAllJobs, LoadEmployersJobs, NewJob, UpdateJob } from "../actions/job.actions";
 
 @Injectable()
 export class EventEffects {
@@ -46,17 +47,17 @@ export class EventEffects {
         mergeMap((job)=>this.employerService.updateJob(job.payload.id, job.payload)
         .pipe(
         map((event)=>({
-            type:EventToUpdateTypes.DELETE_EVENT_TO_UPDATE,
+            type:JobToUpdateTypes.DELETE_JOB_TO_UPDATE,
         })))
     )))
 
     @Effect({dispatch:false})
     deleteOneEvent = this.actions$.pipe(
-        ofType<DeleteEvent>(EventActionTypes.DELETE_EVENT),
-        tap(action => this.directorService.deleteEvent(action.payload.id)
+        ofType<DeleteJob>(JobActionTypes.DELETE_JOB),
+        tap(action => this.employerService.deleteJob(action.payload.id)
         .subscribe(
             noop,
-            err => alert("Doslo je do greske pri brisanju eventa iz baze!")
+            err => alert("Doslo je do greske pri brisanju posla iz baze!")
         ))
     );
 

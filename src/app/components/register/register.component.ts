@@ -75,10 +75,10 @@ export class RegisterComponent implements OnInit {
         let emp=new Employer(ime.value,prezime.value, email.value,company.value);
         this.authService.postRegisterEmployer(emp)
         .subscribe(value => {
-          alert(`Uspešno registrovan reziser ${emp.email}!`)
+          alert(`Uspešno registrovan poslodavac ${emp.email}!`)
           },
           err => {
-          alert(`Dogodila se greška pri registrovanju rezisera, pokušajte ponovo.`)
+          alert(`Dogodila se greška pri registrovanju poslodavca, pokušajte ponovo.`)
         })
         ime.value='';
         prezime.value='';

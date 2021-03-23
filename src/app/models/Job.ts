@@ -1,26 +1,26 @@
 export interface IJob {
-    id:string;
+    id:number;
     name: string;
     description: string;
     employerId: string;
-    type: number;
-    cratedOn: Date;
+    type: string;
+    userCount: number;
 }
 
 export class Job implements IJob{
-    id:string;
+    id:number;
     name: string;
     description: string;
     employerId: string;
-    type: number;
-    cratedOn: Date;
+    type: string;
+    userCount: number;
 
-    constructor(name, description, type, employerId, date) {
+    constructor(name, description, type, employerId, userCount) {
         this.name = name;
         this.description = description;
         this.type = type;
         this.employerId = employerId;
-        this.cratedOn = date;
+        this.userCount = userCount;
     }
   
 }

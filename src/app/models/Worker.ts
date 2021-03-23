@@ -1,5 +1,5 @@
 export interface IWorker {
-    id:string;
+    id:number;
     name: string;
     surname: string;
     email: string;
@@ -8,7 +8,7 @@ export interface IWorker {
 }
 
 export class Worker implements IWorker{
-    id:string;
+    id:number;
     name: string;
     surname: string;
     email: string;

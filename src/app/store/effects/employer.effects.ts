@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { createEffect, ofType, Actions } from "@ngrx/effects";
+import { createEffect, ofType, Actions, Effect } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
 import { map, mergeMap } from "rxjs/operators";
 import { EmployerService } from "src/app/services/employer.service";
@@ -11,17 +11,17 @@ export class EmployerEffects {
   getUserById=createEffect(() => this.actions$.pipe(
     ofType<NeedEmployerInfo>( EmployerActionTypes.NEED_INFO_ACTION),
     map((action)=>action.email),
-        mergeMap((email)=>this.directorService.getDirectorByEmail(email)
+        mergeMap((email)=>this.employerService.getEmployerByEmail(email)
         .pipe(
             map((user)=>({
                 type:EmployerActionTypes.GET_INFO_ACTION,
-                director:user[0]
+                employer:user[0]
             })))
         )
     ))
   
     constructor(private actions$: Actions,
                 private store: Store<AppState>,
-                private directorService: EmployerService) { }
+                private employerService: EmployerService) { }
 
 }

@@ -1,13 +1,13 @@
-export interface IJobSignedUp {
-    id:string;
-    jobId:string;
-    workerId:string;
+export interface IJobEmployed {
+    id:number;
+    jobId:number;
+    workerId:number;
 }
 
-export class JobSignedUp implements IJobSignedUp{
-    id:string;
-    jobId:string;
-    workerId:string;
+export class JobEmployed implements IJobEmployed{
+    id:number;
+    jobId:number;
+    workerId:number;
 
     constructor(jobId, workerId) {
         this.jobId = jobId;

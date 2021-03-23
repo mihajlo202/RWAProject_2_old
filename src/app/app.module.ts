@@ -19,6 +19,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { FormsModule } from '@angular/forms';
 import { EmployerEffects } from './store/effects/employer.effects';
+import { CreateJobComponent } from './components/create-job/create-job.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { EmployerEffects } from './store/effects/employer.effects';
     EmployerComponent,
     WorkerComponent,
     EmployerProfileComponent,
-    WorkerProfileComponent
+    WorkerProfileComponent,
+    CreateJobComponent
   ],
   imports: [
     BrowserModule,

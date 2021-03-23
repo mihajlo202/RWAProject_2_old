@@ -1,12 +1,12 @@
 export interface ILoggedUser {
-    id:string;
+    id:number;
     email: string;
     password: string;
     role: string;
 }
 
 export class LoggedUser implements ILoggedUser{
-    id:string;
+    id:number;
     email: string;
     password: string;
     role: string;

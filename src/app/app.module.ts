@@ -18,6 +18,7 @@ import { reducers, metaReducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { FormsModule } from '@angular/forms';
+import { EmployerEffects } from './store/effects/employer.effects';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AuthEffects,
-      //DirectorEffects,
+      EmployerEffects,
       //EventEffects,
       //UserEffects,
       //UserInfoEffects,

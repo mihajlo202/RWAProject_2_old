@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import * as EventEmitter from 'node:events';
 import { Job } from 'src/app/models/Job';
 import { AppState } from 'src/app/store';
+import { NewJob, UpdateJob } from 'src/app/store/actions/job.actions';
 import { selectEmployerId } from 'src/app/store/selectors/employer.selectors';
 
 @Component({
@@ -20,7 +21,7 @@ export class CreateJobComponent implements OnInit {
     employerId: null
   };
 
-  directorId$=this.store.select(selectEmployerId);
+  employerId$=this.store.select(selectEmployerId);
 
   @Output() cancelClicked: EventEmitter =
   new EventEmitter();
@@ -29,8 +30,8 @@ export class CreateJobComponent implements OnInit {
   constructor( private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    // this.store.select( state => state.eventToUpdate.event)
-    // .subscribe(event => this.event={...event});
+    this.store.select( state => state.jobToUpdate.job)
+    .subscribe(event => this.job={...event});
   }
   
   cancelModal(): void {
@@ -39,14 +40,14 @@ export class CreateJobComponent implements OnInit {
 
   handleClick(): void {
     if(this.isUpdating){
-      //this.store.dispatch( new UpdateEvent(this.event))
+      this.store.dispatch( new UpdateJob(this.job))
     }
     else
     {
-      // this.directorId$.subscribe(id =>{
-      //     this.job.employerId=id;
-      //     this.store.dispatch(new NewEvent(this.event))
-      //   })
+      this.employerId$.subscribe(id =>{
+          this.job.employerId=id;
+          this.store.dispatch(new NewJob(this.job))
+        })
     }
     this.cancelModal();
   }

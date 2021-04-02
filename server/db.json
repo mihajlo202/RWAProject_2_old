@@ -32,28 +32,15 @@
       "id": 1
     }
   ],
-  "event": [
+  "job": [
     {
-      "name": "Vratiće se rode ",
-      "description": "Da li će se rode ikada vratiti? Ili su ljudi postali toliko loši da smo zauvek izgubili ove blagonosne ptice.",
-      "userType": "glumac",
-      "userCount": 19,
-      "directorId": 1,
+      "name": "oglas1",
+      "description": "dsadas",
+      "userCount": 33,
+      "employerId": 1,
       "id": 1
     }
   ],
-  "eventSignedUp": [
-    {
-      "event": 6,
-      "user": 10,
-      "id": 8
-    }
-  ],
-  "eventEmployed": [
-    {
-      "id": 1,
-      "event": 1,
-      "user": 4
-    }
-  ]
+  "jobSignedUp": [],
+  "jobEmployed": []
 }

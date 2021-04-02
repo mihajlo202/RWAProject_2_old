@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as EventEmitter from 'node:events';
 import { Job } from 'src/app/models/Job';
 import { AppState } from 'src/app/store';
 import { NewJob, UpdateJob } from 'src/app/store/actions/job.actions';
@@ -23,7 +22,7 @@ export class CreateJobComponent implements OnInit {
 
   employerId$=this.store.select(selectEmployerId);
 
-  @Output() cancelClicked: EventEmitter =
+  @Output() cancelClicked: EventEmitter<any> =
   new EventEmitter();
   @Input() isUpdating: boolean;
 

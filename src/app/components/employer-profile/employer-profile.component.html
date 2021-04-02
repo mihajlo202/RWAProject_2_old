@@ -9,19 +9,19 @@
                 <button class="create-event-btn" (click)="createNewJobClicked();">Novi posao</button>
             </div>
         </div>
-        <!-- <mat-card *ngFor="let event of allEvents" class="example-card">
+        <div *ngFor="let event of allEvents" class="example-card">
             <div class="oglas-content">
-                <mat-card-actions class="oglas-details">
-                    <mat-card-title>{{event.name}}</mat-card-title>
-                    <mat-card-subtitle>{{event.description}}</mat-card-subtitle>
-                    <mat-card-subtitle>Potreban tip korisnika: {{event.userType}}</mat-card-subtitle>
-                    <mat-card-subtitle>Broj potrebnih korisnika: {{event.userCount}}</mat-card-subtitle>
+                <div class="oglas-details">
+                    <div>{{event.name}}</div>
+                    <div>{{event.description}}</div>
+                    <div>Potreban tip korisnika: {{event.userType}}</div>
+                    <div>Broj potrebnih korisnika: {{event.userCount}}</div>
                     <div class="oglas-buttons">
-                        <button class="oglas-dugme" mat-button (click)="onUpdateClick(event);">Izmeni</button>
-                        <button class="oglas-dugme" mat-button (click)="showSignedUsers(event);" >Lista prijavljenih korisnika</button>
-                        <button class="oglas-dugme" mat-button (click)="onDeleteClick(event);">Obriši</button>
+                        <button class="oglas-dugme btn btn-secondary"  (click)="onUpdateClick(event);">Izmeni</button>
+                        <button class="oglas-dugme btn btn-secondary"  (click)="showSignedWorkers(event);" >Lista prijavljenih korisnika</button>
+                        <button class="oglas-dugme btn btn-secondary"  (click)="onDeleteClick(event);">Obriši</button>
                     </div>
-                </mat-card-actions>
+                </div>
                 <div class="oglas-image" ></div>
             </div>
             <div class="signedUsers" *ngIf="event.id===idEvent">
@@ -33,8 +33,8 @@
                     <button class="oglas-dugme zaposli-dugme" mat-button >Zaposli</button>
                 </div>
             </div>
-        </mat-card> -->
+        </div>
     </div>
 </div>
 
-<!-- <create-oglas *ngIf="displayEventModal" [isUpdating]="isUpdating" (cancelClicked)='hideEventModal()'></create-oglas> -->
+<app-create-job *ngIf="displayEventModal" [isUpdating]="isUpdating" (cancelClicked)='hideJobModal()'></app-create-job>

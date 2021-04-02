@@ -2,10 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { Employer } from 'src/app/models/Employer';
+import { Worker } from 'src/app/models/Worker';
 import { Job } from 'src/app/models/Job';
-import { JobSignedUp } from 'src/app/models/JobEmployed';
+import { JobSignedUp } from 'src/app/models/JobSignedUp';
 import { AppState } from 'src/app/store';
+import { JobToUpdate } from 'src/app/store/actions/job-update.actions';
+import { DeleteJob } from 'src/app/store/actions/job.actions';
 import { selectEmployerInfo } from 'src/app/store/selectors/employer.selectors';
+import { selectAllEventsSigned } from 'src/app/store/selectors/job-signed-up.selectors';
+import { selectAllEvents } from 'src/app/store/selectors/job.selectors';
+import { selectAllUsers } from 'src/app/store/selectors/worker.selectors';
 
 @Component({
   selector: 'app-employer-profile',
@@ -35,15 +41,15 @@ export class EmployerProfileComponent implements OnInit {
     filter(val => val !== undefined)
   );
 
-  // allUsers$=this.store.pipe(
-  //   select(selectAllUsers),
-  //   filter(val => val !== undefined)
-  // )
+  allUsers$=this.store.pipe(
+    select(selectAllUsers),
+    filter(val => val !== undefined)
+  )
 
-  // eventsSignedUp$=this.store.pipe(
-  //   select(selectAllEventsSigned),
-  //   filter(val => val !== undefined)
-  // );
+  eventsSignedUp$=this.store.pipe(
+    select(selectAllEventsSigned),
+    filter(val => val !== undefined)
+  );
   
   constructor(private store: Store<AppState>) { 
     this.displayEventModal=false;
@@ -52,19 +58,19 @@ export class EmployerProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.employer$.subscribe( (employer: Employer) => this.employer={...employer})
-    // this.store.select(selectAllEvents).subscribe((response) => {
-    //   this.allEvents = response as Event[]
-    // });
+    this.store.select(selectAllEvents).subscribe((response) => {
+      this.allEvents = response as Job[]
+    });
     
-    // this.allUsers$.subscribe( users =>{
-    //   users.forEach(user => this.allUsers.push(user))
-    // })
+    this.allUsers$.subscribe( users =>{
+      users.forEach(user => this.allUsers.push(user))
+    })
  
-  //   this.eventsSignedUp$.subscribe((events) =>{
-  //       events.forEach(eventSigned =>{
-  //         this.objectSignedEvents.push(eventSigned)
-  //       })
-  //   })
+    this.eventsSignedUp$.subscribe((events) =>{
+        events.forEach(eventSigned =>{
+          this.objectSignedEvents.push(eventSigned)
+        })
+    })
   }
 
   createNewJobClicked(){
@@ -76,36 +82,36 @@ export class EmployerProfileComponent implements OnInit {
     this.displayEventModal=false;
   }
 
-  onUpdateClick(event : Event){
+  onUpdateClick(job : Job){
     this.displayEventModal=true;
     this.isUpdating=true;
-    //this.store.dispatch(new EventToUpdate(event));
+    this.store.dispatch(new JobToUpdate(job));
   }
 
-  onDeleteClick(event: Event){
-    //this.store.dispatch( new DeleteEvent(event));
+  onDeleteClick(job: Job){
+    this.store.dispatch( new DeleteJob(job));
   }
 
-  // showSignedWorkers(event : Event){
-  //   this.idEvent=event.id;
-  //   this.signedUsers=[];
-  //   this.idsSignedUsers=[];
+  showSignedWorkers(event : Job){
+    this.idEvent=event.id;
+    this.signedUsers=[];
+    this.idsSignedUsers=[];
 
-  //   this.objectSignedEvents.forEach(object => {
-  //     if(object.event===this.idEvent)
-  //       this.idsSignedUsers.push(object.user)
-  //   });
+    this.objectSignedEvents.forEach(object => {
+      if(object.jobId===this.idEvent)
+        this.idsSignedUsers.push(object.workerId)
+    });
 
-  //   if(this.idsSignedUsers.length){
-  //     this.allUsers.forEach(user=>{
-  //       this.idsSignedUsers.forEach(userId=>{
-  //         if(user.id===userId)
-  //           this.signedUsers.push(user);
-  //       })
-  //     })
-  //   }
-  //   else alert("Na ovom oglasu još uvek nema prijavljenih korisnika!")
-  // }
+    if(this.idsSignedUsers.length){
+      this.allUsers.forEach(user=>{
+        this.idsSignedUsers.forEach(userId=>{
+          if(user.id===userId)
+            this.signedUsers.push(user);
+        })
+      })
+    }
+    else alert("Na ovom oglasu još uvek nema prijavljenih korisnika!")
+  }
   
   closeSignedUsers(){
     this.signedUsers=[];

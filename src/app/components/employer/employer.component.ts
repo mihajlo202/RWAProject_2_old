@@ -3,6 +3,10 @@ import { select, Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { AppState } from 'src/app/store';
 import { NeedEmployerInfo } from 'src/app/store/actions/employer.actions';
+import { LoadAllJobsEmployed } from 'src/app/store/actions/job-employed.actions';
+import { LoadJobsSignedUp } from 'src/app/store/actions/job-sign-up.actions';
+import { LoadEmployersJobs } from 'src/app/store/actions/job.actions';
+import { LoadAllWorkers } from 'src/app/store/actions/worker.actions';
 import { selectedLoggedUser } from 'src/app/store/selectors/auth.selectors';
 import { selectEmployerInfo } from 'src/app/store/selectors/employer.selectors';
 
@@ -17,7 +21,7 @@ export class EmployerComponent implements OnInit {
     filter(val => val !== undefined)
   );
 
-  director$=this.store.pipe(
+  employer$=this.store.pipe(
     select(selectEmployerInfo),
     filter(val => val !== undefined)
   );
@@ -28,12 +32,12 @@ export class EmployerComponent implements OnInit {
     this.user$.subscribe(
       user => this.store.dispatch(new NeedEmployerInfo(user.email))
     )
-    // this.director$.subscribe( director =>{
-    //   this.store.dispatch(new LoadDirectorsEvents(director.id))
-    // })
-    // this.store.dispatch(new LoadAllUsers());
-    // this.store.dispatch(new LoadEventsSignedUp);
-    // this.store.dispatch(new LoadAllEventsEmployed)
+    this.employer$.subscribe( employer =>{
+      this.store.dispatch(new LoadEmployersJobs(employer.id))
+    })
+    this.store.dispatch(new LoadAllWorkers());
+    this.store.dispatch(new LoadJobsSignedUp);
+    this.store.dispatch(new LoadAllJobsEmployed)
   }
 
 }

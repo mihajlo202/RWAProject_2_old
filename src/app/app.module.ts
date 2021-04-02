@@ -21,6 +21,10 @@ import { FormsModule } from '@angular/forms';
 import { EmployerEffects } from './store/effects/employer.effects';
 import { CreateJobComponent } from './components/create-job/create-job.component';
 import { WorkerEffects } from './store/effects/worker.effects';
+import { EventEffects } from './store/effects/job.effects';
+import { UserInfoEffects } from './store/effects/user-info.effects';
+import { JobsSignedUpEffects } from './store/effects/job-signed-up.effects';
+import { EventsEmployedEffects } from './store/effects/job-employed.effects';
 
 @NgModule({
   declarations: [
@@ -42,13 +46,14 @@ import { WorkerEffects } from './store/effects/worker.effects';
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AuthEffects,
+    EffectsModule.forRoot([
+      AuthEffects,
       EmployerEffects,
-      //EventEffects,
+      EventEffects,
       WorkerEffects,
-      //UserInfoEffects,
-      //EventsSignedUpEffects,
-      //EventsEmployedEffects
+      UserInfoEffects,
+      JobsSignedUpEffects,
+      EventsEmployedEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25

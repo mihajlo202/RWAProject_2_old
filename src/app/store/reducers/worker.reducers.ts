@@ -2,6 +2,8 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { Worker } from "src/app/models/Worker";
 import { WorkerActionTypes, WorkerActions } from "../actions/worker.actions";
 
+export const workerFeatureKey = 'Workers';
+
 export interface WorkerState extends EntityState<Worker> {}
 
 export const userAdapter : EntityAdapter<Worker> = createEntityAdapter<Worker>();

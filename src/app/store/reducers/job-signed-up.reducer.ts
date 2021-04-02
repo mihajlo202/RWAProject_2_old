@@ -4,7 +4,7 @@ import { JobSignedUp } from 'src/app/models/JobSignedUp';
 import { JobsSignedUpActionTypes, JobsSignedUpActions } from '../actions/job-sign-up.actions';
 
 
-export const eventsSignedUpFeatureKey = 'jobSignedUp';
+export const eventsSignedUpFeatureKey = 'JobSignedUp';
 
 export interface JobsSignedUpState extends EntityState<JobSignedUp> {}
 

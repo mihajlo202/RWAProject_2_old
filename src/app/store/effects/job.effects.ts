@@ -4,6 +4,7 @@ import { noop } from "rxjs";
 import { map, mergeMap, tap } from "rxjs/operators";
 import { EmployerService } from "src/app/services/employer.service";
 import { WorkerService } from "src/app/services/worker.service";
+import { JobToUpdateTypes } from "../actions/job-update.actions";
 import { DeleteJob, JobActionTypes, LoadAllJobs, LoadEmployersJobs, NewJob, UpdateJob } from "../actions/job.actions";
 
 @Injectable()

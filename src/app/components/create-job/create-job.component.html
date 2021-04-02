@@ -4,33 +4,31 @@
             <span (click)="cancelModal()" class="cancel">&times;</span>
         </div>
         <div class="log-modal-main">
-            <mat-label class="label">Unesite podatke o novom oglasu.</mat-label>
+            <form>
+                <label class="label">Unesite podatke o novom oglasu</label>
+                <div class="form-group">
+                    <label>Unesite naziv oglasa:</label>
+                    <input name="job-name" class="form-control" type="text" [(ngModel)]="job.name" required>
+                </div>
 
-            <mat-form-field class="polje-za-uneti" required>
-                <mat-label>Unesite naziv oglasa</mat-label>
-                <input  matInput [(ngModel)]="event.name" required>
-            </mat-form-field>
+                <div class="form-group">
+                    <label>Unesite opis oglasa:</label>
+                    <textarea name="job-description" class="form-control" type="text" rows="5" [(ngModel)]="job.description" required></textarea>
+                </div>
+            
+                <div class="form-group">
+                    <label>Unesite tip potrebnih rednika:</label>
+                    <select name="job-tip" class="form-control" type="text" [(value)]="job.type" required>
+                        <option value="haha">hahah</option>
+                    </select>
 
-            <mat-form-field class="polje-za-uneti">
-                <mat-label>Unesite opis oglasa</mat-label>
-                <textarea matInput [(ngModel)]="event.description"></textarea>
-            </mat-form-field>
-
-            <mat-form-field  class="polje-za-uneti" >
-                <mat-label>Unsite tip potrebnih korisnika</mat-label>
-                <mat-select [(value)]="event.userType" >
-                    <mat-option value="glumac" >Glumac</mat-option>
-                    <mat-option value="snimatelj" >Snimatelj</mat-option>
-                    <mat-option value="statista" >Statista</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field appearance="fill" class="example-full-width polje-za-uneti">
-                <mat-label>Unesite broj potrebnih korisnika</mat-label>
-                <input matInput [(ngModel)]="event.userCount" type="number" required>
-            </mat-form-field>
-             
-            <button class="login-btn" type="button" (click)="handleClick()">Sačuvaj</button>
+                </div>
+                <div class="form-group">
+                    <label>Unesite broj potrebnih radnika:</label>
+                    <input name="job-count" class="form-control" type="number" [(ngModel)]="job.userCount" required>
+                </div>
+                <button class="btn btn-primary" type="button" (click)="handleClick()">Sačuvaj</button>
+            </form>
         </div>
     </div>
 </div> 

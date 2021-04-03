@@ -25,6 +25,10 @@ import { EventEffects } from './store/effects/job.effects';
 import { UserInfoEffects } from './store/effects/user-info.effects';
 import { JobsSignedUpEffects } from './store/effects/job-signed-up.effects';
 import { EventsEmployedEffects } from './store/effects/job-employed.effects';
+import { AuthRoleGuard } from './services/auth-role.guard';
+import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
+import { SearchWorkersComponent } from './components/search-workers/search-workers.component';
+import { SearchJobsComponent } from './components/search-jobs/search-jobs.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { EventsEmployedEffects } from './store/effects/job-employed.effects';
     WorkerComponent,
     EmployerProfileComponent,
     WorkerProfileComponent,
-    CreateJobComponent
+    CreateJobComponent,
+    SearchWorkersComponent,
+    SearchJobsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +65,11 @@ import { EventsEmployedEffects } from './store/effects/job-employed.effects';
       maxAge: 25
     })
   ],
-  providers: [],
+  providers:[
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    AuthRoleGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

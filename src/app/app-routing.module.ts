@@ -3,8 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployerProfileComponent } from './components/employer-profile/employer-profile.component';
 import { EmployerComponent } from './components/employer/employer.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { SearchJobsComponent } from './components/search-jobs/search-jobs.component';
+import { SearchWorkersComponent } from './components/search-workers/search-workers.component';
 import { WorkerProfileComponent } from './components/worker-profile/worker-profile.component';
 import { WorkerComponent } from './components/worker/worker.component';
+import { AuthRoleGuard } from './services/auth-role.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: '/mainPage', pathMatch: 'full'},
@@ -12,11 +15,11 @@ const routes: Routes = [
   {
     path: 'employer',
     component: EmployerComponent,
-    //canActivate:[AuthRoleGuard],
+    canActivate:[AuthRoleGuard],
     children: [
       {path: '', component: EmployerProfileComponent },
-      {path: 'profil', component: EmployerProfileComponent}//,
-      //{path: 'pocetna', component: SearchUsersComponent}
+      {path: 'profil', component: EmployerProfileComponent},
+      {path: 'main', component: SearchWorkersComponent}
     ],
     data: { role: 'employer'}
   },
@@ -25,10 +28,10 @@ const routes: Routes = [
     component: WorkerComponent,
     children: [
       {path: '', component: WorkerProfileComponent },
-      {path: 'profil', component: WorkerProfileComponent}//,
-      //{path: 'pocetna', component: SearchEventsComponent}
+      {path: 'profil', component: WorkerProfileComponent},
+      {path: 'main', component: SearchJobsComponent}
     ],
-    //canActivate:[AuthRoleGuard],
+    canActivate:[AuthRoleGuard],
     data: { role: 'worker'}
   },
   {path: '**', redirectTo: 'mainPage', pathMatch: 'full'}

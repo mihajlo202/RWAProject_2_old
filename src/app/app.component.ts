@@ -48,11 +48,11 @@ pocetnaClicked(){
 profilClicked(){
   this.user$.subscribe(
   user=>{
-    if(user.role==="reziser"){
-      this.router.navigate(['/employer/profile'])
+    if(user.role==="employer"){
+      this.router.navigate(['/employer/profil'])
     }
     else{
-      this.router.navigate(['/employer/profile'])
+      this.router.navigate(['/worker/profil'])
     }
     })
   }

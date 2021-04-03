@@ -3,8 +3,8 @@ export interface IWorker {
     name: string;
     surname: string;
     email: string;
-    type: number;
-    status: number;
+    type: string;
+    status: string;
 }
 
 export class Worker implements IWorker{
@@ -12,8 +12,8 @@ export class Worker implements IWorker{
     name: string;
     surname: string;
     email: string;
-    type: number;
-    status: number;
+    type: string;
+    status: string;
 
     constructor(name, surname, email, type, status) {
         this.name = name;

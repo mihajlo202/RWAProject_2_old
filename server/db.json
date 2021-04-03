@@ -28,15 +28,16 @@
       "surname": "Stamenkovic",
       "email": "stefan@gmail.com",
       "type": "Elektricar",
-      "status": 0,
+      "status": "slobodan",
       "id": 1
     }
   ],
   "job": [
     {
       "name": "oglas1",
-      "description": "dsadas",
-      "userCount": 33,
+      "description": "oglas1",
+      "type": "Elektricar",
+      "userCount": 2,
       "employerId": 1,
       "id": 1
     }

@@ -23,7 +23,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    /* background-color: salmon; */
 }
 
 .profile-image-div{
@@ -53,17 +52,18 @@
     width: 200px;
     height: 50px;
     border-radius: 3px;
-    background-color: rgb(192, 37, 37);
+    background-color: rgba(37, 78, 88, 0.966);
     color:white;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size:18px;
+    cursor: pointer;
 }
 
 .create-event-btn:hover{
-    background-color: rgb(136, 17, 17);
+    background-color: rgba(52, 108, 122, 0.966);
     transition-duration: 0.2;
 }
 
@@ -88,7 +88,7 @@
 }
 
 .example-card {
-    background-color:rgb(184, 157, 153);
+    background-color:rgb(221, 224, 224);
     margin:10px;
     min-width: 100;
     min-height: 240px;
@@ -106,11 +106,12 @@
 .oglas-details{
     max-width: 50%;
     display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     flex-direction: column;
     justify-content: space-around;
 }
 .oglas-image{
-    margin:10px;
+    margin:30px;
     background-image: url("/../../../assets/job1.jpg");
     min-height: 240px;
     width: 50%;
@@ -128,11 +129,11 @@
 }
 
 .oglas-dugme{
-    background-color: rgb(170, 144, 140);
+    background-color: rgba(37, 78, 88, 0.966);
 }
 
 .oglas-dugme:hover{
-    background-color: rgb(146, 125, 122);
+    background-color: rgba(52, 108, 122, 0.966);
 }
 
 .signedUsers{
@@ -147,7 +148,7 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color:rgb(216, 207, 206);
+    background-color:rgb(182, 182, 182);
     border-radius: 5px;
 }
 
@@ -180,7 +181,7 @@
     align-self: end;
     justify-self: end;
     cursor: pointer;
-    color: #ccc;
+    color: rgb(70, 68, 68);
     position: relative;
     top: 0;
     right:15px;

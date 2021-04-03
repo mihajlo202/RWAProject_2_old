@@ -18,8 +18,14 @@
             
                 <div class="form-group">
                     <label>Unesite tip potrebnih rednika:</label>
-                    <select name="job-tip" class="form-control" type="text" [(value)]="job.type" required>
-                        <option value="haha">hahah</option>
+                    <select name="job-tip" class="form-control" type="text" [(ngModel)]="job.type" required>
+                        <option value="Elektricar">Elektricar</option>
+                        <option value="Vodoinstalater">Vodoinstalater</option>
+                        <option value="Keramicar">Keramicar</option>
+                        <option value="Inzinjer">Inzinjer</option>
+                        <option value="Vozac">Vozac</option>
+                        <option value="Ekonomista">Ekonomista</option>
+                        <option value="Prodavac">Prodavac</option>
                     </select>
 
                 </div>

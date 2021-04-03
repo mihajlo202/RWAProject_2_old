@@ -14,7 +14,7 @@
                 <div class="oglas-details">
                     <div>{{event.name}}</div>
                     <div>{{event.description}}</div>
-                    <div>Potreban tip korisnika: {{event.userType}}</div>
+                    <div>Potreban tip korisnika: {{event.type}}</div>
                     <div>Broj potrebnih korisnika: {{event.userCount}}</div>
                     <div class="oglas-buttons">
                         <button class="oglas-dugme btn btn-secondary"  (click)="onUpdateClick(event);">Izmeni</button>
@@ -30,7 +30,6 @@
                 </div>
                 <div *ngFor="let user of signedUsers" class="user">
                     <label class="userLbl"><b>{{user.name}} {{user.surname}}</b>, Email: <b>{{user.email}}</b></label>
-                    <button class="oglas-dugme zaposli-dugme" mat-button >Zaposli</button>
                 </div>
             </div>
         </div>

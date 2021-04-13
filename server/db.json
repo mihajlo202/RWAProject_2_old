@@ -28,7 +28,7 @@
       "surname": "Stamenkovic",
       "email": "stefan@gmail.com",
       "type": "Elektricar",
-      "status": "slobodan",
+      "status": "u procesu",
       "id": 1
     }
   ],
@@ -40,8 +40,30 @@
       "userCount": 2,
       "employerId": 1,
       "id": 1
+    },
+    {
+      "name": "oglas2",
+      "description": "oglas2",
+      "type": "Vodoinstalater",
+      "userCount": 2,
+      "employerId": 1,
+      "id": 2
+    },
+    {
+      "name": "oglas3",
+      "description": "oglas3",
+      "type": "Vozac",
+      "userCount": 1,
+      "employerId": 1,
+      "id": 3
     }
   ],
-  "jobSignedUp": [],
+  "jobSignedUp": [
+    {
+      "jobId": 1,
+      "workerId": 1,
+      "id": 1
+    }
+  ],
   "jobEmployed": []
 }

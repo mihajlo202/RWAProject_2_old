@@ -3,7 +3,6 @@ import { select, Store } from '@ngrx/store';
 import { filter } from 'rxjs/operators';
 import { AppState } from 'src/app/store';
 import { NeedEmployerInfo } from 'src/app/store/actions/employer.actions';
-import { LoadAllJobsEmployed } from 'src/app/store/actions/job-employed.actions';
 import { LoadJobsSignedUp } from 'src/app/store/actions/job-sign-up.actions';
 import { LoadEmployersJobs } from 'src/app/store/actions/job.actions';
 import { LoadAllWorkers } from 'src/app/store/actions/worker.actions';
@@ -37,7 +36,6 @@ export class EmployerComponent implements OnInit {
     })
     this.store.dispatch(new LoadAllWorkers());
     this.store.dispatch(new LoadJobsSignedUp);
-    this.store.dispatch(new LoadAllJobsEmployed)
   }
 
 }

@@ -24,7 +24,6 @@ import { WorkerEffects } from './store/effects/worker.effects';
 import { EventEffects } from './store/effects/job.effects';
 import { UserInfoEffects } from './store/effects/user-info.effects';
 import { JobsSignedUpEffects } from './store/effects/job-signed-up.effects';
-import { EventsEmployedEffects } from './store/effects/job-employed.effects';
 import { AuthRoleGuard } from './services/auth-role.guard';
 import { JwtHelperService, JWT_OPTIONS } from "@auth0/angular-jwt";
 import { SearchWorkersComponent } from './components/search-workers/search-workers.component';
@@ -58,8 +57,7 @@ import { SearchJobsComponent } from './components/search-jobs/search-jobs.compon
       EventEffects,
       WorkerEffects,
       UserInfoEffects,
-      JobsSignedUpEffects,
-      EventsEmployedEffects
+      JobsSignedUpEffects
     ]),
     StoreDevtoolsModule.instrument({
       maxAge: 25

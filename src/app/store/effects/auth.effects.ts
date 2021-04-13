@@ -5,6 +5,11 @@ import { defer, of } from "rxjs";
 import { switchMap, tap } from "rxjs/operators";
 import { NavService } from "src/app/services/nav.service";
 import { AuthActionTypes, LogIn, LogOut } from "../actions/auth.actions";
+import { DeleteEmployerInfo } from "../actions/employer.actions";
+import { DeleteAllJobsSignedUp } from "../actions/job-sign-up.actions";
+import { DeleteAllJobs } from "../actions/job.actions";
+import { DeleteUserInfoAction } from "../actions/worker-info.actions";
+import { DeleteAllWorkers } from "../actions/worker.actions";
 
 @Injectable()
 export class AuthEffects {
@@ -24,12 +29,11 @@ export class AuthEffects {
   logout$ = createEffect(() => this.actions$.pipe(
     ofType<LogOut>(AuthActionTypes.LogoutAction),
     switchMap(()=> [
-      //new DeleteAllEvents(),
-      //new DeleteDirectorInfo(),
-      //new DeleteUserInfoAction(),
-      //new DeleteAllUsers(),
-      //new DeleteAllEventsEmployed(),
-      //new DeleteAllEventsSignedUp()
+       new DeleteAllJobs(),
+       new DeleteEmployerInfo(),
+       new DeleteUserInfoAction(),
+       new DeleteAllWorkers(),
+       new DeleteAllJobsSignedUp()
     ]),
     tap(() => {
       localStorage.removeItem("user");

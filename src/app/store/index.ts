@@ -2,7 +2,6 @@ import { ActionReducerMap, MetaReducer } from "@ngrx/store";
 import { environment } from "src/environments/environment";
 import { authReducer, AuthState } from "./reducers/auth.reducer";
 import { employerReducer, EmployerState } from "./reducers/employer.reducer";
-import { jobsEmployedReducer, JobsEmployedState } from "./reducers/job-employed.reducers";
 import { jobsSignedUpReducer, JobsSignedUpState } from "./reducers/job-signed-up.reducer";
 import { jobToUpdateReducer, JobToUpdateState } from "./reducers/job-update.reducers";
 import { jobReducer, JobState } from "./reducers/job.reducers";
@@ -17,8 +16,7 @@ export interface AppState {
     jobs: JobState,
     jobToUpdate: JobToUpdateState,
     worker: WorkerState,
-    jobsSignedUp: JobsSignedUpState,
-    jobsEmployed: JobsEmployedState
+    jobsSignedUp: JobsSignedUpState
 }
 
 export const reducers : ActionReducerMap<AppState> = {
@@ -28,8 +26,7 @@ export const reducers : ActionReducerMap<AppState> = {
     jobs: jobReducer,
     jobToUpdate: jobToUpdateReducer,
     worker: workerReducer,
-    jobsSignedUp: jobsSignedUpReducer,
-    jobsEmployed: jobsEmployedReducer
+    jobsSignedUp: jobsSignedUpReducer
 };
 
 export const metaReducers: MetaReducer<AppState>[] = !environment.production ? [] : [];

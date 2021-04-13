@@ -23,7 +23,7 @@ export function jobReducer(state = initialState, action: JobActions): JobState {
     case JobActionTypes.DELETE_JOB:
       return adapter.removeOne(action.payload.id, state);
 
-    case JobActionTypes.LOAD_ALL_JOBS:
+    case JobActionTypes.DELETE_ALL_JOBS:
       return adapter.removeAll(state);
 
     case JobActionTypes.UPDATE_JOB: {

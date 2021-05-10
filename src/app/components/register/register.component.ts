@@ -89,6 +89,7 @@ export class RegisterComponent implements OnInit {
     }
     else if(this.isWorker){
       const tip = this.selectedSelect;
+      console.log(tip)
       const provera=this.checkInput(ime.value, prezime.value, email.value,password.value, tip);
       if(!provera){
         this.errorMsg="Unesite sva input polja za registraciju!"
@@ -109,5 +110,9 @@ export class RegisterComponent implements OnInit {
         password.value='';
       }
     }
+  }
+
+  selectChangedEvent(event) {
+    this.selectedSelect = event.target.value;
   }
 }

@@ -41,8 +41,8 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fa fa-building"></i> </span>
             </div>
-            <select class="form-control" [(value)]="selectedSelect">
-                <option value="Elektricar">Elektricar</option>
+            <select class="form-control"  (change)="selectChangedEvent($event);">
+                <option value="Elektricar" selected>Elektricar</option>
                 <option value="Vodoinstalater">Vodoinstalater</option>
                 <option value="Keramicar">Keramicar</option>
                 <option value="Inzinjer">Inzinjer</option>
